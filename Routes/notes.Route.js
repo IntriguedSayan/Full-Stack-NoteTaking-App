@@ -7,11 +7,11 @@ const { authentication } = require("../Middlewares/authentication")
 const notesController=Router()
 
 
-notesController.get("/",authentication,(req,res)=>{
+notesController.get("/",authentication,async(req,res)=>{
 
-    
-
-    return res.send("Notes")
+    const{userId}=req.body
+    const notes=await NoteModel.find({userId:userId})
+    return res.send({msg:"Data fetched",notes:notes})
 })
 
 

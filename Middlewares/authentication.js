@@ -2,7 +2,7 @@ const jwt=require("jsonwebtoken")
 require("dotenv").config()
 
 const authentication=(req,res,next)=>{
-    if(!req.headeres.authorization){
+    if(!req.headers.authorization){
         return res.send("Please Login")
     }
     const token=req.headers?.authorization?.split(" ")[1]
