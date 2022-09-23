@@ -14,7 +14,7 @@ app.use("/auth",authController)
 app.use("/notes",notesController)
 
 app.get("/",(req,res)=>{
-    res.send("Welcome to homePage")
+    res.json({msg:"Welcome to homePage"})
 })
 
 app.listen(PORT,async()=>{
