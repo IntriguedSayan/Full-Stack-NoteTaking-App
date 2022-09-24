@@ -5,11 +5,11 @@ import NoteList from '../components/NoteList'
 
 const NotesApp = () => {
 
-    
+
 
 
   return (
-    <Box>
+    <Box mt={"10%"}>
         <NoteInput/>
         <NoteList/>
     </Box>

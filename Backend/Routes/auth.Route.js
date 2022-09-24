@@ -29,7 +29,7 @@ authController.post("/signup",async(req,res)=>{
             return res.status(201).json({msg:"Signup Successful"})
         }
     }else{
-        return res.json({msg:"Please choose another email"})
+        return res.status(400).json({msg:"Please choose another email"})
     }
    
 

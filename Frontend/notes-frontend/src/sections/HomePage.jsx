@@ -4,7 +4,7 @@ import React from 'react'
 const HomePage = () => {
   return (
     <Box>
-        <Text textAlign={"center"} fontSize="4xl">Welcome to Homepage</Text>
+        <Text mt={"20%"} textAlign={"center"} fontSize="4xl">Welcome to Homepage</Text>
     </Box>
   )
 }
