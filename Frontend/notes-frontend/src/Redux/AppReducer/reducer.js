@@ -15,7 +15,9 @@ export const reducer = (oldState=initState,action) => {
     
         case types.GET_NOTES_DATA_REQUEST: return{ ...oldState,isLoading:true}
 
-        case types.GET_NOTES_DATA_SUCCESSFUL: return{...oldState,isLoading:false,notesData:[...payload]}
+        case types.GET_NOTES_DATA_SUCCESSFUL:
+            console.log(payload)
+             return{...oldState,isLoading:false,notesData:[...payload]}
         
         case types.GET_NOTES_DATA_FAILURE: return{...oldState,isError:true}
 

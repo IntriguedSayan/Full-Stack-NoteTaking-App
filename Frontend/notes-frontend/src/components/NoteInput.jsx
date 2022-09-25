@@ -2,7 +2,7 @@ import { Box, Button, Input, Text, useToast } from '@chakra-ui/react'
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addData } from '../Redux/AppReducer/action'
+import { addData, getData } from '../Redux/AppReducer/action'
 import { ADD_NOTES_DATA_FAILURE, ADD_NOTES_DATA_SUCCESSFUL } from '../Redux/AppReducer/actionTypes'
 
 
@@ -30,11 +30,12 @@ const NoteInput = () => {
               duration: 8000,
               isClosable: true,
              })
+             dispatch(getData())
           }else if(res.type===ADD_NOTES_DATA_FAILURE){
             toast({
               title: "Failed to add note",
               description: "Please try again later",
-              status: 'success',
+              status: 'error',
               duration: 8000,
               isClosable: true,
              })
@@ -48,7 +49,7 @@ const NoteInput = () => {
         <Text fontSize={"4xl"}>THE NOTES APP</Text>
 
         <Input width={"350px"} mt="5%" name="heading" onChange={handelChange} placeholder="Add your note heading from here" />
-        <Input width={"350px"} mt="5%" name="Description" onChange={handelChange} placeholder="Add description about your notes" />
+        <Input width={"350px"} mt="5%" name="description" onChange={handelChange} placeholder="Add description about your notes" />
         <Input width={"350px"} mt="5%" name="tag" onChange={handelChange} placeholder="Give tags to your notes" />
         <Button size={"lg"} colorScheme="cyan" display={"block"} onClick={handleAdd} m={"auto"} mt="3%">ADD</Button>
     </Box>
