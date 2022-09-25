@@ -31,7 +31,7 @@ const Signup = () => {
         })
       }else if(res.type===SIGUP_FAILURE){
         toast({
-          title: "This email already exists",
+          title: "Something went wrong.",
           description: "Please try again.",
           status: 'error',
           duration: 8000,

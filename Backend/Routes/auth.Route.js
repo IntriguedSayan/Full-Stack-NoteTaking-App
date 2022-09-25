@@ -17,16 +17,20 @@ authController.post("/signup",async(req,res)=>{
     if(!checkEmail){
         let hashedPassword=bcrypt.hashSync(password,6)
         if(!hashedPassword){
-            return res.status(500).json({msg:"Something went wrong. Please try again."})
+            return res.status(500).json({msg:"Something went wrong. Please try again later."})
         }else{
             const user=new UserModel({
-                name:name,
-                email:email,
+                name,
+                email,
                 password:hashedPassword 
             })
-    
-            await user.save()
-            return res.status(201).json({msg:"Signup Successful"})
+            try{
+                await user.save()
+                return res.status(201).json({msg:"Signup Successful"})
+            }catch(err){
+                console.log(err)
+                res.status(500).json({msg:"Something went wrong. Please try again later"})
+            }
         }
     }else{
         return res.status(400).json({msg:"Please choose another email"})
@@ -38,15 +42,20 @@ authController.post("/signup",async(req,res)=>{
 authController.post("/login",async(req,res)=>{
 
     const{email,password}=req.body
-    const user=await UserModel.findOne({email:email})
-
+    const user=await UserModel.findOne({email})
+    if(!user){
+        return res.status(400).json({msg:"Something went wrong. Please give correct credentials and try again later."})
+    }
     const hashedPassword=user.password
     bcrypt.compare(password,hashedPassword,(err,result)=>{
+        if(err){
+            return res.status(500).json({msg:"Something went wrong. Please try again later."})
+        }
         if(result){
-            const token=jwt.sign({userId:user._id},`${process.env.SECRET_KEY}`)
+            const token=jwt.sign({userId:user._id},process.env.SECRET_KEY)
             return res.status(200).json({message:"login succesful",token:token})
         }else{
-            return res.json({msg:"Login failed. Please try again"})
+            return res.status(400).json({msg:"Login failed. Invalid credentials, please signup if you haven't."})
         }
     })
 

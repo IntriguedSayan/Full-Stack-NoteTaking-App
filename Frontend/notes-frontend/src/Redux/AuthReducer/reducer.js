@@ -19,7 +19,7 @@ export const reducer=(oldState=initState,action)=>{
         
         case types.LOGIN_SUCCESSFUL:
             console.log(payload)
-            saveLocalData("tokenkey",payload)
+            saveLocalData("tokenKey",payload)
             return {...oldState,isAuthLoading:false,isAuth:true,token:payload}
          
         case types.LOGIN_FAILURE:

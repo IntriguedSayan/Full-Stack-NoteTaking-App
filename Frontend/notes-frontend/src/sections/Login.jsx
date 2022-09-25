@@ -16,9 +16,8 @@ const Login = () => {
   const Navigate=useNavigate()
 
   const comingFrom=location.state?.from?.pathname || "/notes"
-
-
- const handleChange=(e)=>{
+ 
+  const handleChange=(e)=>{
 
     const {name,value}=e.target 
     setLoginState({...loginState,[name]:value})
@@ -26,8 +25,7 @@ const Login = () => {
  }
  const handleClick=()=>{
 
-  dispatch(logIn(loginState))
-  .then((res)=>{
+  dispatch(logIn(loginState)).then((res)=>{
     if(res.type===LOGIN_SUCCESSFUL){
        toast({
         title: "Login Successful",

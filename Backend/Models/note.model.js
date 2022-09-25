@@ -1,6 +1,6 @@
 const mongoose=require("mongoose")
 
-const noteSchema=mongoose.Schema({
+const noteSchema= new mongoose.Schema({
     heading:{type:String,required:true},
     description:{type:String,required:true},
     tag:{type:String,required:true},
