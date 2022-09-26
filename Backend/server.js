@@ -2,11 +2,12 @@ const express=require("express")
 const connection=require("./Config/db")
 const {authController}=require("./Routes/auth.Route")
 const {notesController}=require("./Routes/notes.Route")
+require("dotenv").config()
 const cors=require("cors")
 
 const app=express()
 
-const PORT=7600
+const PORT=process.env.PORT || 7600
 
 app.use(express.json())
 app.use(cors())
