@@ -1,4 +1,4 @@
-import { Box, Button, Input, Text, useToast } from '@chakra-ui/react'
+import { Box, Button, Input, useToast } from '@chakra-ui/react'
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -45,12 +45,12 @@ const NoteInput = () => {
 
   return (
     
-    <Box width={"40%"} border="1px solid black" m={"auto"} mt="6%" height={"60%"} pb="10px">
-        <Text fontSize={"4xl"}>THE NOTES APP</Text>
+    <Box width={"100%"} border="1px solid black" m={"auto"} borderRadius="10px" height={"60%"} pb="10px">
+       
 
-        <Input width={"350px"} mt="5%" name="heading" onChange={handelChange} placeholder="Add your note heading from here" />
-        <Input width={"350px"} mt="5%" name="description" onChange={handelChange} placeholder="Add description about your notes" />
-        <Input width={"350px"} mt="5%" name="tag" onChange={handelChange} placeholder="Give tags to your notes" />
+        <Input width={"350px"} ml="5%" mt="8%" name="heading" onChange={handelChange} placeholder="Add your note heading from here" />
+        <Input width={"350px"} ml="5%" mt="8%" name="description" onChange={handelChange} placeholder="Add description about your notes" />
+        <Input width={"350px"} ml="5%" mt="8%" name="tag" onChange={handelChange} placeholder="Give tags to your notes" />
         <Button size={"lg"} colorScheme="cyan" display={"block"} onClick={handleAdd} m={"auto"} mt="3%">ADD</Button>
     </Box>
 

@@ -1,4 +1,4 @@
-import { Grid,} from '@chakra-ui/react'
+import { Grid, Text,} from '@chakra-ui/react'
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -17,14 +17,14 @@ const NoteList = () => {
       dispatch(getData())
      
 
-    },[dispatch])
+    },[dispatch,notesData])
   return (
         <Grid  m="auto" mt="6%" width={"80%"} gridTemplateColumns={"repeat(4,1fr)"} gap="6">
           {
-            notesData?.map((elem)=>(
+            notesData.length!==0?notesData.map((elem)=>(
               <SingleNote  key={elem._id} id={elem._id}  heading={elem.heading}
                description={elem.description} tag={elem.tag} />
-            ))
+            )) :<Text width={"100%"} fontSize={"2xl"} ml="100%">Looks like you have not addded any note</Text>
           }
             
         </Grid>

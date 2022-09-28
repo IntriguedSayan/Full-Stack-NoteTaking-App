@@ -7,6 +7,9 @@ import { SIGUP_FAILURE, SIGUP_SUCCESSFUL } from '../Redux/AuthReducer/actionType
 import { useToast } from '@chakra-ui/react'
 import Navbar from './Navbar'
 import { motion } from 'framer-motion'
+import signupBg from "../assets/signup.jpg"
+import "./Signup.css"
+import Glass from './Glass'
 
 const Signup = () => {
 
@@ -50,13 +53,13 @@ const Signup = () => {
      animate={{width:"100%"}}
      exit={{x:window.innerWidth,transition:{duration:0.5}}}>
       <Navbar/>
-    <Box width={"40%"} border="1px solid black" m={"auto"} mt="10%" height={"60%"} pb="10px">
-                     <Text fontSize={"4xl"}>SignUp</Text>
+      <Glass bgimg={signupBg}>
+      <Text fontSize={"4xl"}>SignUp</Text>
         <Input width={"350px"} mt="5%" name="name" onChange={handleChange} placeholder="Add your name here" />
         <Input width={"350px"} mt="5%" name="email" onChange={handleChange} placeholder="Add your email" />
         <Input width={"350px"} mt="5%" name="password" onChange={handleChange} placeholder="Add your Password" />
         <Button size={"lg"} colorScheme="cyan" display={"block"} onClick={handleSignUp} m={"auto"} mt="3%">SIGNUP</Button>
-    </Box>
+      </Glass>
     </motion.div>
   )
 }

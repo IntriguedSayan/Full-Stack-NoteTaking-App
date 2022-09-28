@@ -7,6 +7,10 @@ import { logIn } from '../Redux/AuthReducer/action'
 import { LOGIN_FAILURE, LOGIN_SUCCESSFUL } from '../Redux/AuthReducer/actionTypes'
 import Navbar from './Navbar'
 import { motion } from 'framer-motion' 
+import loginBg from "../assets/login.jpg"
+import "./Login.css"
+import Glass from './Glass'
+
 
 const Login = () => {
 
@@ -57,14 +61,12 @@ const Login = () => {
      exit={{x:window.innerWidth,transition:{duration:0.5}}}
     >
       <Navbar/>
-    <Box width={"40%"} border="1px solid black" m={"auto"} mt="10%" height={"60%"} pb="10px">
-
-                    <Text fontSize={"4xl"}>LOGIN</Text>
+      <Glass bgimg={loginBg}>
+      <Text fontSize={"4xl"}>LOGIN</Text>
         <Input width={"350px"} mt="5%" name="email" onChange={handleChange} placeholder="type your email" />
         <Input width={"350px"} mt="5%" name="password" onChange={handleChange} placeholder="type your Password" />
         <Button size={"lg"} colorScheme="green" onClick={handleClick} display={"block"} m={"auto"} mt="3%">LOGIN</Button>
-
-    </Box>
+      </Glass>
     </motion.div>
   )
 }

@@ -4,6 +4,7 @@ import { useDispatch,} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteData, getData } from '../Redux/AppReducer/action'
 import { DELETE_NOTES_DATA_FAILURE, DELETE_NOTES_DATA_SUCCESS } from '../Redux/AppReducer/actionTypes'
+import "./Glass.css"
 
 export const SingleNote = ({heading,description,tag,id}) => {
   
@@ -39,13 +40,19 @@ export const SingleNote = ({heading,description,tag,id}) => {
 
 
   return (
-    <Box border={"1px solid cyan"} borderRadius="10px">
+    <Box border={"1px solid cyan"} className='glass' height={"auto"} width="220px" borderRadius="12px">
         <Link to={`/update/${id}`}>
-          <Flex direction={"column"} border="1px solid grey" borderRadius={"10px"}
+          <Flex  direction={"column"}  borderRadius={"10px"}
                 justifyContent="center" gap={"2%"}>
-              <Text color={"black"}>{heading}</Text>
-              <Text color={"cyan.700"}>{description}</Text>
-              <Text color={"orange.700"}>{tag}</Text>
+              <Box border={"1px solid lawngreen"} borderTopRightRadius="10px" borderTopLeftRadius={"10px"}  >
+                <Text fontSize={"xl"} color={"black"}>{heading}</Text>
+              </Box> 
+              <Box border={"1px solid cyan"} >
+                <Text fontSize={"md"} color={"white"}>{description}</Text>
+              </Box>  
+              <Box border={"1px solid orange "} >
+                <Text fontSize={"lg"} color={"orange.700"}>{tag}</Text>
+              </Box> 
           </Flex>
         </Link>
         <Button size={"sm"} colorScheme={"pink"} mt="2%" mb={"1%"} onClick={handleDelete}>DELETE</Button>
