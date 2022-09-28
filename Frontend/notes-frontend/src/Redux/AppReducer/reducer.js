@@ -3,8 +3,8 @@ const initState={
 
     isLoading:false,
     isError:false,
-    notesData:[]
-
+    notesData:[],
+    name:""
 }
 
 export const reducer = (oldState=initState,action) => {
@@ -17,7 +17,7 @@ export const reducer = (oldState=initState,action) => {
 
         case types.GET_NOTES_DATA_SUCCESSFUL:
             console.log(payload)
-             return{...oldState,isLoading:false,notesData:[...payload]}
+             return{...oldState,isLoading:false,notesData:[...payload.data],name:payload.name}
         
         case types.GET_NOTES_DATA_FAILURE: return{...oldState,isError:true}
 

@@ -15,7 +15,7 @@ export const getData=(params)=>(dispatch)=>{
                         "Authorization":`Bearer ${token}`
                     }
     })
-                .then((res)=>dispatch({type:types.GET_NOTES_DATA_SUCCESSFUL,payload:res.data.notes}))
+                .then((res)=>dispatch({type:types.GET_NOTES_DATA_SUCCESSFUL,payload:{data:res.data.notes,name:res.data.name}}))
                 .catch((err)=>dispatch({type:types.GET_NOTES_DATA_FAILURE}))    
 
 }

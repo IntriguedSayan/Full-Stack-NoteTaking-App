@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux'
 import { signUp } from '../Redux/AuthReducer/action'
 import { SIGUP_FAILURE, SIGUP_SUCCESSFUL } from '../Redux/AuthReducer/actionTypes'
 import { useToast } from '@chakra-ui/react'
+import Navbar from './Navbar'
+import { motion } from 'framer-motion'
 
 const Signup = () => {
 
@@ -43,6 +45,11 @@ const Signup = () => {
   }
 
   return (
+    <motion.div
+     initial={{width:0}}
+     animate={{width:"100%"}}
+     exit={{x:window.innerWidth,transition:{duration:0.5}}}>
+      <Navbar/>
     <Box width={"40%"} border="1px solid black" m={"auto"} mt="10%" height={"60%"} pb="10px">
                      <Text fontSize={"4xl"}>SignUp</Text>
         <Input width={"350px"} mt="5%" name="name" onChange={handleChange} placeholder="Add your name here" />
@@ -50,6 +57,7 @@ const Signup = () => {
         <Input width={"350px"} mt="5%" name="password" onChange={handleChange} placeholder="Add your Password" />
         <Button size={"lg"} colorScheme="cyan" display={"block"} onClick={handleSignUp} m={"auto"} mt="3%">SIGNUP</Button>
     </Box>
+    </motion.div>
   )
 }
 

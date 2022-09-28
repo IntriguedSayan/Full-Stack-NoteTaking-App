@@ -11,6 +11,7 @@ const authentication=(req,res,next)=>{
             return res.send("Please Login")
         }else{
             req.body.userId=decoded.userId
+            req.body.name=decoded.name
             next()
         }
         

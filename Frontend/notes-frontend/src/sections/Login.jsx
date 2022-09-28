@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { logIn } from '../Redux/AuthReducer/action'
 import { LOGIN_FAILURE, LOGIN_SUCCESSFUL } from '../Redux/AuthReducer/actionTypes'
-
+import Navbar from './Navbar'
+import { motion } from 'framer-motion' 
 
 const Login = () => {
 
@@ -50,6 +51,12 @@ const Login = () => {
   
 
   return (
+    <motion.div 
+     initial={{width:0}}
+     animate={{width:"100%"}}
+     exit={{x:window.innerWidth,transition:{duration:0.5}}}
+    >
+      <Navbar/>
     <Box width={"40%"} border="1px solid black" m={"auto"} mt="10%" height={"60%"} pb="10px">
 
                     <Text fontSize={"4xl"}>LOGIN</Text>
@@ -58,6 +65,7 @@ const Login = () => {
         <Button size={"lg"} colorScheme="green" onClick={handleClick} display={"block"} m={"auto"} mt="3%">LOGIN</Button>
 
     </Box>
+    </motion.div>
   )
 }
 

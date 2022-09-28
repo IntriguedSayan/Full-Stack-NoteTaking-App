@@ -9,12 +9,12 @@ const notesController=Router()
 
 notesController.get("/",authentication,async(req,res)=>{
 
-    const{userId}=req.body
+    const{userId,name}=req.body
     const notes=await NoteModel.find({userId:userId})
         if(!notes){
         return res.status(500).json({msg:"Something went wrong"})
         }
-        return res.status(200).json({msg:"Data fetched",notes:notes})
+        return res.status(200).json({msg:"Data fetched",name:name,notes:notes})
     
        
 
