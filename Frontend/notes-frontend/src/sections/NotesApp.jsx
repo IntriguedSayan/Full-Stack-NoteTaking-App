@@ -5,12 +5,13 @@ import NoteList from '../components/NoteList'
 import Navbar from './Navbar'
 import { motion } from 'framer-motion' 
 import NoteInputModal from '../components/NoteInputModal'
-import notesPic from "../assets/notesbg.jpg"
+// import notesPic from "../assets/notesbg.jpg"
+import { useSelector } from 'react-redux'
 
 const NotesApp = () => {
 
 
-
+  const notesData=useSelector((store)=>store.appReducer.notesData)
 
   return (
     <motion.div
@@ -18,7 +19,7 @@ const NotesApp = () => {
      animate={{width:"100%"}}
      exit={{x:window.innerWidth,transition:{duration:0.5}}}>
       <Navbar/>
-    <Box  backgroundImage={notesPic} backgroundSize="cover" mt={"2%"} width={"100%"} >
+    <Box  backgroundImage={"https://user-images.githubusercontent.com/101392591/193495018-c8961a73-e0bc-40bb-b546-0c51b418d14a.jpg"} backgroundSize="cover" height={notesData.length>4?"auto":"100vh"} mt={"2%"} width={"100%"} >
    
         <NoteInputModal/>
         <NoteList/>

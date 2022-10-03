@@ -7,9 +7,9 @@ import { SIGUP_FAILURE, SIGUP_SUCCESSFUL } from '../Redux/AuthReducer/actionType
 import { useToast } from '@chakra-ui/react'
 import Navbar from './Navbar'
 import { motion } from 'framer-motion'
-import signupBg from "../assets/signup.jpg"
 import "./Signup.css"
 import Glass from './Glass'
+import { NavLink } from 'react-router-dom'
 
 const Signup = () => {
 
@@ -33,6 +33,7 @@ const Signup = () => {
           status: 'success',
           duration: 8000,
           isClosable: true,
+          position:"top"
         })
       }else if(res.type===SIGUP_FAILURE){
         toast({
@@ -41,6 +42,7 @@ const Signup = () => {
           status: 'error',
           duration: 8000,
           isClosable: true,
+          position:"top"
         })
         
       }
@@ -53,12 +55,15 @@ const Signup = () => {
      animate={{width:"100%"}}
      exit={{x:window.innerWidth,transition:{duration:0.5}}}>
       <Navbar/>
-      <Glass bgimg={signupBg}>
+      <Glass bgimg={"https://user-images.githubusercontent.com/101392591/193494979-deedef9c-02e9-47ae-9e88-a07e87ba4044.jpg"}>
       <Text fontSize={"4xl"}>SignUp</Text>
         <Input width={"350px"} mt="5%" name="name" onChange={handleChange} placeholder="Add your name here" />
         <Input width={"350px"} mt="5%" name="email" onChange={handleChange} placeholder="Add your email" />
-        <Input width={"350px"} mt="5%" name="password" onChange={handleChange} placeholder="Add your Password" />
+        <Input width={"350px"} type="password" mt="5%" name="password" onChange={handleChange} placeholder="Add your Password" />
         <Button size={"lg"} colorScheme="cyan" display={"block"} onClick={handleSignUp} m={"auto"} mt="3%">SIGNUP</Button>
+        <Box mt={"4%"} >
+        <NavLink to={"/login"}><Text fontSize={"large"} color="Highlight">Login</Text></NavLink>
+        </Box>
       </Glass>
     </motion.div>
   )
