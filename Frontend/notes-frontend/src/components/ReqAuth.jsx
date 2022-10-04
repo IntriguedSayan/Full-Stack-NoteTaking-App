@@ -1,19 +1,24 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { shallowEqual, useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 
 const ReqAuth = ({children}) => {
 
-   
-    
-    const isAuth=useSelector((store)=>store.authReducer.isAuth)
+   const {isAuth}=useSelector((store)=>{
+        return{
+            isAuth:store.authReducer.isAuth
+        }
+        
+    },shallowEqual)
+
     console.log(isAuth)
 
-    if(!isAuth){
-        return <Navigate to={"/login"} replace />
+    if(isAuth){
+        return children
     }
 
-    return children
+    return <Navigate to={"/login"} />
+   
 
 }
 
