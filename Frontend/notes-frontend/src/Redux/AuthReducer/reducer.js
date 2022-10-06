@@ -6,7 +6,8 @@ const initState={
     isAuth:getLocalData("tokenKey") ? true : false,
     isAuthLoading:false,
     isError:false,
-    token:getLocalData("tokenKey") || ""
+    token:getLocalData("tokenKey") || "",
+    error:""
 }
 
 export const reducer=(oldState=initState,action)=>{
@@ -24,7 +25,14 @@ export const reducer=(oldState=initState,action)=>{
          
         case types.LOGIN_FAILURE:
             return {...oldState,isError:true,isAuth:false,isAuthLoading:false,token:""} 
+
+        case types.LOGOUT_SUCCESSFUL:
+            localStorage.removeItem("tokenKey")
+            return{...oldState,isError:false,isAuth:false,isAuthLoading:false,token:""}    
         
+        case types.LOGOUT_FAILURE:
+            return{...oldState,isError:true,error:payload}
+
         default:return oldState    
     }
 

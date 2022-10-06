@@ -1,5 +1,7 @@
 import *as types from "./actionTypes"
 import axios from "../../axios/index"
+import { useSelector } from "react-redux"
+
 
 const signUpRequest=()=>{
 
@@ -27,5 +29,17 @@ export const logIn=(payload)=>(dispatch)=>{
   return axios.post("/auth/login",payload)
          .then((res)=>dispatch({type:types.LOGIN_SUCCESSFUL,payload:res.data.token}))
          .catch((err)=>dispatch({type:types.LOGIN_FAILURE}))
+
+}
+
+export const logOut=(params)=>(dispatch)=>{
+    dispatch({type:types.LOGOUT_REQUEST})
+            try{
+                return dispatch({type:types.LOGOUT_SUCCESSFUL})
+            }catch(err){
+                return dispatch({type:types.LOGOUT_FAILURE,payload:err})
+            }
+ 
+    
 
 }
