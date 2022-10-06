@@ -41,7 +41,7 @@ notesController.post("/create",authentication,async(req,res)=>{
     }
     const payload=req.body
     const newPayload={...payload,userId:userId}
-    console.log(newPayload)
+    // console.log(newPayload)
     const notes=await new NoteModel(newPayload)
     try{
         notes.save()
@@ -78,7 +78,7 @@ notesController.delete("/:id",authentication,authorization,async(req,res)=>{
         return res.status(200).json({msg:"Note deleted"})
     }catch(err){
         console.log(err)
-        return res.status(404).json({msg:"Something went wrong."})
+        return res.status(500).json({msg:"Something went wrong"})
     }
     
 
