@@ -10,7 +10,7 @@ export const getData=(params)=>(dispatch)=>{
 
         dispatch(getDataRequest())
         const token=getLocalData("tokenKey")
-    return axios.get("/notes",{
+    return axios.get(`/notes`,{
                     headers:{
                         "Authorization":`Bearer ${token}`
                     }

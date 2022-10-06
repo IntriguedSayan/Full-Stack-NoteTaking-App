@@ -1,4 +1,4 @@
-const {Router}=require("express")
+const {Router, application}=require("express")
 const {NoteModel}=require("../Models/note.model")
 const jwt=require("jsonwebtoken")
 const { authentication } = require("../Middlewares/authentication")
@@ -11,16 +11,27 @@ notesController.get("/",authentication,async(req,res)=>{
 
     const{userId,name}=req.body
     const notes=await NoteModel.find({userId:userId})
-        if(!notes){
+    if(!notes){
         return res.status(500).json({msg:"Something went wrong"})
-        }
-        return res.status(200).json({msg:"Data fetched",name:name,notes:notes})
+    }
+    return res.status(200).json({msg:"Data fetched",name:name,notes:notes})
     
-       
+})
 
+notesController.get("/:id",authentication,authorization,async(req,res)=>{
     
+    const id = req.params.id
+
+    const singleNote=await NoteModel.findOne({_id:id})
+
+    if(!singleNote){
+        return res.status(500).json({msg:"Something went wrong."})
+    }
+    
+    return res.status(200).json({msg:"Note fetched",note:singleNote})
 
 })
+
 
 notesController.post("/create",authentication,async(req,res)=>{
 

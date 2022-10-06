@@ -1,4 +1,4 @@
-import { Box, Button, Input, Text, useToast } from '@chakra-ui/react'
+import { Box, Button, Flex, Input, Text, useToast } from '@chakra-ui/react'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -8,6 +8,7 @@ import { getData, updateData } from '../Redux/AppReducer/action'
 import { UPDATE_NOTES_DATA_FAILURE, UPDATE_NOTES_DATA_SUCCESS } from '../Redux/AppReducer/actionTypes'
 import Navbar from './Navbar'
 import { motion } from 'framer-motion'
+import ViewSingleNote from '../components/ViewSingleNote'
 
 const EditNote = () => {
     
@@ -68,15 +69,20 @@ const EditNote = () => {
      animate={{width:"100%"}}
      exit={{x:window.innerWidth,transition:{duration:0.5}}}
      >
-        <Navbar/>
-    <Box width={"40%"} border="1px solid black" m={"auto"} mt="10%" height={"60%"} pb="10px">
-        <Text fontSize={"4xl"}>EDIT NOTE</Text>
+        <Navbar />
+    <Flex width={"100%"}>
+        <Box width={"57%"} mt="10%">
+            <ViewSingleNote heading={heading} description={description} tag={tag} />
+        </Box>
+        <Box width={"40%"} border="1px solid black" m={"auto"} mt="10%" height={"60%"} pb="10px">
+            <Text fontSize={"4xl"}>EDIT NOTE</Text>
 
-        <Input width={"350px"} mt="5%" name="heading" value={heading} onChange={(e)=>setHeading(e.target.value)} placeholder="Add your note heading from here" />
-        <Input width={"350px"} mt="5%" name="description" value={description} onChange={(e)=>setDescription(e.target.value)} placeholder="Add description about your notes" />
-        <Input width={"350px"} mt="5%" name="tag" value={tag} onChange={(e)=>setTag(e.target.value)} placeholder="Give tags to your notes" />
-        <Button size={"lg"} colorScheme="cyan" display={"block"} onClick={handleAdd} m={"auto"} mt="3%">ADD</Button>
-    </Box>
+            <Input width={"350px"} mt="5%" name="heading" value={heading} onChange={(e)=>setHeading(e.target.value)} placeholder="Add your note heading from here" />
+            <Input width={"350px"} mt="5%" name="description" value={description} onChange={(e)=>setDescription(e.target.value)} placeholder="Add description about your notes" />
+            <Input width={"350px"} mt="5%" name="tag" value={tag} onChange={(e)=>setTag(e.target.value)} placeholder="Give tags to your notes" />
+            <Button size={"lg"} colorScheme="cyan" display={"block"} onClick={handleAdd} m={"auto"} mt="3%">ADD</Button>
+        </Box>
+    </Flex>
     </motion.div>
   )
 }
