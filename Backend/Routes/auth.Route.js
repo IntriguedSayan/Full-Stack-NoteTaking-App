@@ -12,7 +12,7 @@ authController.get("/",(req,res)=>{
     res.json({msg:"Continue towards authentication"})
 })
 
-authController.get("/user/:Id",authentication,authorization,async(req,res)=>{
+authController.get("/user/:Id",authentication,async(req,res)=>{
 
     const id=req.params.Id
     const user=await UserModel.findOne({_id: id })
@@ -20,7 +20,24 @@ authController.get("/user/:Id",authentication,authorization,async(req,res)=>{
     if(!user){
         return res.status(500).json({msg:"Something went wrong,user not found. Please try again later."})
     }
-    return res.status(200).json({msg:"Succecsful",user:user})
+    return res.status(200).json({msg:"Profile fetched Succecsfully",user:user})
+
+})
+
+authController.patch("/user/:id",authentication,async(req,res)=>{
+        
+    const id=req.params.id
+    const payload=req.body
+
+    await UserModel.findByIdAndUpdate({_id:id},payload)
+
+    try{
+        res.status(200).json({msg:"Profile updated successfully"})
+    }catch(err){
+        console.log(err)
+        res.status(500).json({msg:"Something went wrong",err:err})
+    }
+
 
 })
 
