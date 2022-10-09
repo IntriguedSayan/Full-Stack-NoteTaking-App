@@ -19,7 +19,7 @@ const NotesApp = () => {
      animate={{width:"100%"}}
      exit={{x:window.innerWidth,transition:{duration:0.5}}}>
       <Navbar/>
-    <Box  backgroundImage={"https://user-images.githubusercontent.com/101392591/193495018-c8961a73-e0bc-40bb-b546-0c51b418d14a.jpg"} backgroundSize="cover" height={notesData.length>4?"auto":"100vh"} mt={"2%"} width={"100%"} >
+    <Box  backgroundImage={"https://user-images.githubusercontent.com/101392591/194741844-b2203008-b0fa-4b83-bb6f-0ce289371831.jpg"} backgroundSize="cover" height={notesData.length>4?"auto":"100vh"} mt={"2%"} width={"100%"} >
    
         <NoteInputModal/>
         <NoteList/>
