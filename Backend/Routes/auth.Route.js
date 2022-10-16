@@ -3,11 +3,42 @@ const {UserModel}=require("../Models/user.model")
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcrypt")
 require("dotenv").config()
+const {authentication}=require("../Middlewares/authentication")
+const {authorization}=require("../Middlewares/authorization")
 
 const authController=Router()
 
 authController.get("/",(req,res)=>{
     res.json({msg:"Continue towards authentication"})
+})
+
+authController.get("/user/:Id",authentication,async(req,res)=>{
+
+    const id=req.params.Id
+    const user=await UserModel.findOne({_id: id })
+
+    if(!user){
+        return res.status(500).json({msg:"Something went wrong,user not found. Please try again later."})
+    }
+    return res.status(200).json({msg:"Profile fetched Succecsfully",user:user})
+
+})
+
+authController.patch("/update/:id",authentication,async(req,res)=>{
+        
+    const id=req.params.id
+    const payload=req.body
+
+    await UserModel.findByIdAndUpdate({_id:id},payload)
+
+    try{
+        res.status(200).json({msg:"Profile updated successfully"})
+    }catch(err){
+        console.log(err)
+        res.status(500).json({msg:"Something went wrong",err:err})
+    }
+
+
 })
 
 authController.post("/signup",async(req,res)=>{
