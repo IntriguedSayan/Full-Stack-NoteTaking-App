@@ -4,7 +4,7 @@
 
  ### Project Description
  <h1>About </h1>
- The Notes app is a simple yet secure & flexible note taking app for all your day to day notes. Let it be something groccery items that you need to remember or, some serious lecture notes from your college/school, all you have to do is login if you haven't and start writing those notes.
+ The Notes app is a simple yet secure & flexible note taking app for all your day to day notes. Let it be some groccery items that you need to remember or, some serious lecture notes from your college/school, all you have to do is login if you haven't and start writing those notes.
  
  <p align="center">
     <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="reactjs" />
