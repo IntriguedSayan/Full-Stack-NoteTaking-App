@@ -69,7 +69,7 @@ This project was built using React, Chakra UI, CSS, JavaScript for Frontend and 
 ### Setup
 
 
-The project repository can be found in [GitHub link](https://github.com/IntriguedSayan/Yoox-clone.git) or just clone the project using this command. 
+The project repository can be found in [GitHub link](https://github.com/IntriguedSayan/Full-Stack-NoteTaking-App) or just clone the project using this command. 
 
 
 ```
@@ -117,7 +117,7 @@ npm install
 To run the application got to the client folder and run the following command:
 
 ```
-npm run start for 
+npm run start 
 ```
 
 ## For Backend
@@ -158,7 +158,7 @@ npm install
 To run the application got to the client folder and run the following command:
 
 ```
-npm run start for 
+npm run start 
 ```
 
 
@@ -180,13 +180,15 @@ npm run start for
 The user flow that we tried to maintain is,
 
 home -> -> Signup -> create user Id-> Enter email details -> 
-Enter password -> Login -> Dashboard-> -> Add Notes -> View & Update Notes(if you wish) -> Delete Notes(if you wish)
+Enter password -> Login -> Dashboard -> Add Notes -> View a single note & Update Note(if you wish) -> Delete Notes(if you wish)
 
  <h1>MESSAGE></h1>
  I really enjoyed this whole part of developing as this was my first full stack MERN project and I have given the best efforts to bring the BEST thing as POSSIBLE.
  Wait for future updates.
 
- Updates in planning:
+
+
+ -- Updates in planning:
  - Search functionality to search notes quickly
  - Login with google
  - Dark Mode
