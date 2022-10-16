@@ -1,4 +1,4 @@
-###  You are looking at website <span>Yoox Clone<span>
+###  You are looking at website <span>The Notes app<span>
 
  <h2>Welcome to this repo</h2>
 
