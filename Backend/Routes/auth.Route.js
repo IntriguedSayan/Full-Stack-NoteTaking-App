@@ -24,7 +24,7 @@ authController.get("/user/:Id",authentication,async(req,res)=>{
 
 })
 
-authController.patch("/user/:id",authentication,async(req,res)=>{
+authController.patch("/update/:id",authentication,async(req,res)=>{
         
     const id=req.params.id
     const payload=req.body
